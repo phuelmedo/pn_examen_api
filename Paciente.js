@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const pacienteSchema = new mongoose.Schema({
+  rut: String,
+  nombre: String,
+  edad: Number,
+  sexo: String,
+  fotoPersonal: String,
+  fechaIngreso: { type: Date, default: Date.now },
+  enfermedad: String,
+  revisado: { type: Boolean, default: false }
+});
+
+module.exports = mongoose.model('Paciente', pacienteSchema);
