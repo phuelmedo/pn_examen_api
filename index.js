@@ -5,7 +5,7 @@ var path = require('path')
 
 var app = express()
 
-const port = 3000
+const port = 3001
 
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
@@ -17,12 +17,12 @@ mongoose.connect('mongodb+srv://pedro61946:z3xQAGG2afHANTp9@cluster0.yjpunlc.mon
 .then(() => {
     console.log('Database connected')
 
-    const pacienteRoutes = require('./pacienteRoutes')
+    const pacienteRoutes = require('./routes/pacienteRoutes')
     app.use('/api/pacientes', pacienteRoutes)
     app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
     app.listen(port, () => {
-        console.log('Server running in http://localhost:3000')
+        console.log('Server running in http://localhost:3001')
     })
 })
 .catch((err) => {

@@ -9,6 +9,10 @@ const pacienteSchema = new mongoose.Schema({
   fechaIngreso: { type: Date, default: Date.now },
   enfermedad: String,
   revisado: { type: Boolean, default: false }
-});
+})
 
-module.exports = mongoose.model('Paciente', pacienteSchema);
+pacienteSchema.methods.setImgUrl = function setImgUrl(){
+  
+}
+
+module.exports = mongoose.model('Paciente', pacienteSchema)
