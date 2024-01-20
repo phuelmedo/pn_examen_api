@@ -1,13 +1,13 @@
-const Paciente = require('../Paciente');
+const Libro = require('../Libro');
 const path = require('path');
 
-exports.getFotoPaciente = async (req, res) => {
-    const pacienteId = req.params.id;
+exports.getFotoLibro = async (req, res) => {
+    const libroId = req.params.id;
   
     try {
-      const paciente = await Paciente.findById(pacienteId);
+      const libro = await Libro.findById(libroId);
   
-      if (!paciente || !paciente.fotoPersonal) {
+      if (!libro || !libro.fotoPersonal) {
         return res.status(404).json({ error: 'Foto no encontrada' });
       }
   
@@ -15,9 +15,9 @@ exports.getFotoPaciente = async (req, res) => {
       res.set('Content-Type', 'image/jpeg');
       
       // Devuelve el archivo al cliente
-      res.status(200).sendFile(path.join(__dirname, '..', paciente.fotoPersonal));
+      res.status(200).sendFile(path.join(__dirname, '..', libro.fotoPersonal));
     } catch (error) {
-      console.error('Error al obtener la foto del paciente:', error);
+      console.error('Error al obtener la portada del libro:', error);
       res.status(500).json({ error: 'Error interno del servidor' });
     }
   };
